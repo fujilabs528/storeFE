@@ -15,8 +15,15 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import NotFound from "./screens/NotFound";
 
+function callApi() {
+  fetch('https://xxxyyyxxx.herokuapp.com//', { method: 'GET' })
+      .then(data => data.json())
+      .then(json => alert(JSON.stringify(json)))
+}
+
 const App = () => {
   return (
+
     <Router>
       <Switch>
         <Route path="/" 
@@ -28,7 +35,11 @@ const App = () => {
         <Route path="/search/:keyword/:pageNumber" 
         component={HomeScreen} exact />
         
-
+        <div className="App">
+        <header className="App-header">
+          <button onClick={callApi}>Call API</button>
+        </header>
+      </div>
 
         <Route path="/products/:id" component={SingleProduct} />
         <Route path="/login" component={Login} />
@@ -40,6 +51,7 @@ const App = () => {
         <Route path="/placeorder" component={PlaceOrderScreen} />
         <Route path="/order/:id" component={OrderScreen} />
         <Route path="*" component={NotFound} />
+        
       </Switch>
     </Router>
   );
