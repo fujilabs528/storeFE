@@ -23,7 +23,7 @@ export const listProduct =
         
 
         const {data} = await axios.get(
-             `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`)
+             `/api/products`)
         dispatch({type: PRODUCT_LIST_SUCCESS, 
             payload:data})
         }
